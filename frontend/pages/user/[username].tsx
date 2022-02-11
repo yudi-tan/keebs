@@ -15,7 +15,11 @@ const UserPage: NextPage = () => {
       <h1> Username: {username} </h1>
       <Grid container spacing={2}>
         <Grid item>
-          <UserCard />
+          <UserCard
+            profilePictureUrl="https://i.mydramalist.com/vK4lp_5c.jpg"
+            profileHandle="@WW"
+            profileDescription="Hello I am Willie Boy"
+          />
         </Grid>
         <Grid item>
           <UserDescription />
