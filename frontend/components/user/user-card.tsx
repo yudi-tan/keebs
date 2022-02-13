@@ -14,6 +14,7 @@ interface UserCardProps {
   profileDescription: string;
 }
 
+// TODO(yuditan): Add proper default images.
 const UserCard: NextPage<UserCardProps> = ({
   profilePictureUrl = "https://i.mydramalist.com/vK4lp_5c.jpg",
   profileHandle = "@Anon",

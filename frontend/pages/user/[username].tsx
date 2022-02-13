@@ -31,7 +31,13 @@ const UserPage: NextPage = () => {
       <Grid container spacing={2}>
         {Array.from(Array(6)).map((_, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <ItemCard />
+            <ItemCard
+              itemUrls={[
+                "https://pbs.twimg.com/media/E5HZdLbVgAcJwbN.jpg",
+                "https://preview.redd.it/yqlvwm3b1r171.jpg?width=640&crop=smart&auto=webp&s=ba79364856e92106848da1e9c1454f831d2cf4e6",
+              ]}
+              itemDescription="Endgame for real."
+            />
           </Grid>
         ))}
       </Grid>

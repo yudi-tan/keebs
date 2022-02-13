@@ -1,33 +1,27 @@
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
+import ItemCarousel from "./item-carousel.tsx";
+import { NextPage } from "next";
 
-const ItemCard = () => {
+interface ItemCardProps {
+  itemUrls: string[];
+  itemDescription: string;
+}
+
+const ItemCard: NextPage<ItemCardProps> = ({
+  itemUrls = [],
+  itemDescription = "",
+}) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
-        title="IU Keyboard by Perry Works"
-        subheader="Cherry Hyperglide Blacks on Alu Plate"
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image="https://i.redd.it/yqlvwm3b1r171.jpg"
-        alt="IU Keyboard"
-      />
+      <ItemCarousel itemUrls={itemUrls} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Endgame for real.
+          {itemDescription}
         </Typography>
       </CardContent>
     </Card>
