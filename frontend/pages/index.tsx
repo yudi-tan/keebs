@@ -3,14 +3,14 @@ import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '90vh'}}>
       <Head>
         <title>Keebs</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
 
       <main>
-        <h1>Landing Page</h1>
+        <h1>Showcase your Keebs</h1>
       </main>
     </div>
   );

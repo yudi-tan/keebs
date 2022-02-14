@@ -16,9 +16,12 @@ const UserPage: NextPage = () => {
       <Grid container spacing={2}>
         <Grid item>
           <UserCard
-            profilePictureUrl="https://i.mydramalist.com/vK4lp_5c.jpg"
-            profileHandle="@WW"
-            profileDescription="Hello I am Willie Boy"
+            // TODO: Always crop center of the pic so its not flat
+            profilePictureUrl="https://lh3.googleusercontent.com/qCN_I5F6MCesz2hzx4uzEIV2qf-FzICAMqcduD8k22TNlFdaYgvtDFtJPSECEvM1RjOTpx4nTUWTg3vq6VC_6Tbdx6cHPPp2hA=w1200-h630-rj-pp-e365"
+            // TODO: this is the username (maybe should allow users to log in using it too)
+            profileHandle="@ww410"
+            // TODO: this was intended to be a display name rather than description
+            profileDescription="Will Wang"
           />
         </Grid>
         <Grid item>
@@ -32,11 +35,16 @@ const UserPage: NextPage = () => {
         {Array.from(Array(6)).map((_, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <ItemCard
-              itemUrls={[
+              itemImageUrls={[
                 "https://pbs.twimg.com/media/E5HZdLbVgAcJwbN.jpg",
                 "https://preview.redd.it/yqlvwm3b1r171.jpg?width=640&crop=smart&auto=webp&s=ba79364856e92106848da1e9c1454f831d2cf4e6",
               ]}
-              itemDescription="Endgame for real."
+              itemName="Jinsoul TKL"
+              itemColor="Navy"
+              itemPlate="Aluminum"
+              itemSwitches="Cherry MX Hyperglides"
+              itemKeycaps="CRP Who Knows"
+              itemDescription="Yudiboi's endgame for real."
             />
           </Grid>
         ))}

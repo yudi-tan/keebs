@@ -8,29 +8,41 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import ItemCarousel from "./item-carousel.tsx";
 import Modal from "@mui/material/Modal";
-import ItemModelContent from "./item-modal-content.tsx";
+import ItemModalContent from "./item-modal-content.tsx";
 
 interface ItemCardProps {
-  itemUrls: string[];
-  itemDescription: string;
+  itemImageUrls: string[];
+  itemName: string;
+  itemColor?: string;
+  itemPlate?: string;
+  itemSwitches?: string;
+  itemKeycaps?: string;
+  itemDescription?: string;
 }
 
-const ItemCard: NextPage<ItemCardProps> = ({
-  itemUrls = [],
-  itemDescription = "",
-}) => {
+const ItemCard: NextPage<ItemCardProps> = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
+  const {
+    itemImageUrls,
+    itemName,
+    itemColor,
+    itemPlate,
+    itemSwitches,
+    itemKeycaps,
+    itemDescription,
+  } = props;
+  // TODO: item card optionally shows other fields of item
   return (
     <div>
       <Modal open={modalIsOpen} onClose={toggleModal}>
-        <ItemModelContent />
+        <ItemModalContent {...props} />
       </Modal>
       <Card sx={{ maxWidth: 345 }} onClick={toggleModal}>
-        <ItemCarousel itemUrls={itemUrls} />
+        <ItemCarousel itemUrls={itemImageUrls} />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {itemDescription}
+            {itemName}
           </Typography>
         </CardContent>
       </Card>
