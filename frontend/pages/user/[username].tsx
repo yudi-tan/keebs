@@ -6,34 +6,34 @@ import Box from "@mui/material/Box";
 import ItemCard from "../../components/item/item-card.tsx";
 import UserCard from "../../components/user/user-card.tsx";
 import UserDescription from "../../components/user/user-description.tsx";
+import { Typography } from "@mui/material";
 
 const UserPage: NextPage = () => {
   const router = useRouter();
   const { username } = router.query;
   return (
-    <div>
-      <h1> Username: {username} </h1>
-      <Grid container spacing={2}>
+    <Box my={2} mx={4} pt={3}>
+      <Grid container spacing={5}>
         <Grid item>
           <UserCard
             // TODO: Always crop center of the pic so its not flat
-            profilePictureUrl="https://lh3.googleusercontent.com/qCN_I5F6MCesz2hzx4uzEIV2qf-FzICAMqcduD8k22TNlFdaYgvtDFtJPSECEvM1RjOTpx4nTUWTg3vq6VC_6Tbdx6cHPPp2hA=w1200-h630-rj-pp-e365"
+            profilePictureUrl="https://c.tenor.com/OCOiVx90IYMAAAAC/iu-wave.gif"
             // TODO: this is the username (maybe should allow users to log in using it too)
-            profileHandle="@ww410"
+            profileHandle={username}
             // TODO: this was intended to be a display name rather than description
             profileDescription="Will Wang"
           />
         </Grid>
-        <Grid item>
+        <Grid item xs>
           <UserDescription />
         </Grid>
       </Grid>
-      <Box m={5}>
+      <Box my={4}>
         <Divider>Keebs Collection</Divider>
       </Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={5}>
         {Array.from(Array(6)).map((_, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item sx={{ width: 350 }} key={index}>
             <ItemCard
               itemImageUrls={[
                 "https://pbs.twimg.com/media/E5HZdLbVgAcJwbN.jpg",
@@ -49,7 +49,7 @@ const UserPage: NextPage = () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </Box>
   );
 };
 

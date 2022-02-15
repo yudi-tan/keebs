@@ -23,16 +23,14 @@ const UserCard: NextPage<UserCardProps> = ({
   return (
     // TODO(yuditan): Probably need to set maxHeight for this card and
     // cut of the profileDescription text if it exceeds certain length.
-    <Card sx={{ maxWidth: 200, padding: 2 }}>
+    <Card sx={{ width: 180, padding: 2 }}>
       <Stack direction="column" alignItems="center" justifyContent="center">
         <Avatar
           alt="profile picture"
           src={profilePictureUrl}
           sx={{
-            width: "100%",
-            height: "auto",
-            maxWidth: 150,
-            maxHeight: 150,
+            width: 150,
+            height: 150,
           }}
         />
         <CardContent>

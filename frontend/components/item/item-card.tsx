@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import ItemCarousel from "./item-carousel.tsx";
+import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ItemModalContent from "./item-modal-content.tsx";
 
@@ -34,11 +35,11 @@ const ItemCard: NextPage<ItemCardProps> = (props) => {
   } = props;
   // TODO: item card optionally shows other fields of item
   return (
-    <div>
+    <Box display="flex" justifyContent="center">
       <Modal open={modalIsOpen} onClose={toggleModal}>
         <ItemModalContent {...props} />
       </Modal>
-      <Card sx={{ maxWidth: 345 }} onClick={toggleModal}>
+      <Card sx={{ width: "100%" }} onClick={toggleModal}>
         <ItemCarousel itemUrls={itemImageUrls} />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
@@ -46,7 +47,7 @@ const ItemCard: NextPage<ItemCardProps> = (props) => {
           </Typography>
         </CardContent>
       </Card>
-    </div>
+    </Box>
   );
 };
 
