@@ -4,6 +4,8 @@ import Stack from "@mui/material/Stack";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Typography from "@mui/material/Typography";
+import ItemDescriptorField from "./item-descriptor-field.tsx";
+import PaletteIcon from "@mui/icons-material/Palette";
 
 const style = {
   position: "absolute",
@@ -15,14 +17,14 @@ const style = {
   outline: "none",
 };
 
+// TODO(yuditan): Revisit this props. In reality, these params will be passed
+// from backend. In that case, the props should probably just be a generic
+// map since we wouldn't know a-prior what fields are in it.
 interface ItemCardProps {
   itemImageUrls: string[];
   itemName: string;
-  itemColor?: string;
-  itemPlate?: string;
-  itemSwitches?: string;
-  itemKeycaps?: string;
   itemDescription?: string;
+  itemDescriptors: Map<string, string>;
 }
 
 // React.forwardRef is needed when using this as a child component for modal.
@@ -31,21 +33,24 @@ const ItemModalContent = React.forwardRef((props: ItemCardProps, ref: any) => {
   const {
     itemImageUrls,
     itemName,
-    itemColor,
-    itemPlate,
-    itemSwitches,
-    itemKeycaps,
     itemDescription,
+    itemDescriptors = new Map<string, string>(),
   } = props;
   return (
     <Box {...props} ref={ref} sx={style}>
       <Stack direction="column" alignItems="left" justifyContent="center">
-        <Typography>{itemName}</Typography>
-        {itemColor && <Typography> [ColorIcon] {itemColor}</Typography>}
-        {itemColor && <Typography> [PlateIcon] {itemPlate}</Typography>}
-        {itemColor && <Typography> [SwitchesIcon] {itemSwitches}</Typography>}
-        {itemColor && <Typography> [KeycapsIcon] {itemKeycaps}</Typography>}
-        {itemColor && <Typography>{itemDescription}</Typography>}
+        <Typography variant="h3">{itemName}</Typography>
+        <Box>
+          {Array.from(itemDescriptors.entries(), (entry) => (
+            <ItemDescriptorField
+              icon={<PaletteIcon />}
+              descriptor={entry[0]}
+              description={entry[1]}
+              key={entry[0]}
+            />
+          ))}
+          <Typography>{itemDescription}</Typography>
+        </Box>
         <ImageList cols={1}>
           {itemImageUrls.map((url, idx) => (
             <ImageListItem key={idx} cols={1}>

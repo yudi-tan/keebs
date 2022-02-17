@@ -14,25 +14,14 @@ import ItemModalContent from "./item-modal-content.tsx";
 interface ItemCardProps {
   itemImageUrls: string[];
   itemName: string;
-  itemColor?: string;
-  itemPlate?: string;
-  itemSwitches?: string;
-  itemKeycaps?: string;
   itemDescription?: string;
+  itemDescriptors: Map<string, string>;
 }
 
 const ItemCard: NextPage<ItemCardProps> = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
-  const {
-    itemImageUrls,
-    itemName,
-    itemColor,
-    itemPlate,
-    itemSwitches,
-    itemKeycaps,
-    itemDescription,
-  } = props;
+  const { itemImageUrls, itemName, itemDescription, itemDescriptors } = props;
   // TODO: item card optionally shows other fields of item
   return (
     <Box display="flex" justifyContent="center">

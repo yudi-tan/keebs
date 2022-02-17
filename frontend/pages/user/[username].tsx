@@ -11,6 +11,12 @@ import { Typography } from "@mui/material";
 const UserPage: NextPage = () => {
   const router = useRouter();
   const { username } = router.query;
+  const mockDescriptors: Map<string, string> = new Map([
+    ["Color", "Navy"],
+    ["Plate", "Aluminium"],
+    ["Switches", "Cherry Hyperglide Blacks"],
+    ["Keycaps", "CRP Tulip R4"],
+  ]);
   return (
     <Box my={2} mx={4} pt={3}>
       <Grid container spacing={5}>
@@ -40,11 +46,8 @@ const UserPage: NextPage = () => {
                 "https://preview.redd.it/yqlvwm3b1r171.jpg?width=640&crop=smart&auto=webp&s=ba79364856e92106848da1e9c1454f831d2cf4e6",
               ]}
               itemName="Jinsoul TKL"
-              itemColor="Navy"
-              itemPlate="Aluminum"
-              itemSwitches="Cherry MX Hyperglides"
-              itemKeycaps="CRP Who Knows"
               itemDescription="Yudiboi's endgame for real."
+              itemDescriptors={mockDescriptors}
             />
           </Grid>
         ))}
