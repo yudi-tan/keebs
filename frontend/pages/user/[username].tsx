@@ -18,7 +18,7 @@ const UserPage: NextPage = () => {
     ["Keycaps", "CRP Tulip R4"],
   ]);
   return (
-    <Box my={2} mx={4} pt={3}>
+    <Box mt={2} mb={8} mx={4} pt={3}>
       <Grid container spacing={5}>
         <Grid item>
           <UserCard
@@ -38,7 +38,7 @@ const UserPage: NextPage = () => {
         <Divider>Keebs Collection</Divider>
       </Box>
       <Grid container spacing={5}>
-        {Array.from(Array(6)).map((_, index) => (
+        {Array.from(Array(15)).map((_, index) => (
           <Grid item sx={{ width: 350 }} key={index}>
             <ItemCard
               itemImageUrls={[

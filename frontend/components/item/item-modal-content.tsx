@@ -1,5 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -9,11 +10,15 @@ import PaletteIcon from "@mui/icons-material/Palette";
 
 const style = {
   position: "absolute",
+  maxHeight: "80%",
+  maxWidth: "100%",
+  overflowY: "auto",
+  borderRadius: "7px",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
-  padding: 4,
+  padding: 7,
   outline: "none",
 };
 
@@ -39,8 +44,10 @@ const ItemModalContent = React.forwardRef((props: ItemCardProps, ref: any) => {
   return (
     <Box {...props} ref={ref} sx={style}>
       <Stack direction="column" alignItems="left" justifyContent="center">
-        <Typography variant="h3">{itemName}</Typography>
-        <Box>
+        <Typography variant="h3" align="center">
+          {itemName}
+        </Typography>
+        <Box sx={{ padding: 2 }}>
           {Array.from(itemDescriptors.entries(), (entry) => (
             <ItemDescriptorField
               icon={<PaletteIcon />}
@@ -49,7 +56,10 @@ const ItemModalContent = React.forwardRef((props: ItemCardProps, ref: any) => {
               key={entry[0]}
             />
           ))}
-          <Typography>{itemDescription}</Typography>
+          <Typography sx={{ pt: 1 }}>{itemDescription}</Typography>
+        </Box>
+        <Box mb={1}>
+          <Divider>Photo Gallery</Divider>
         </Box>
         <ImageList cols={1}>
           {itemImageUrls.map((url, idx) => (

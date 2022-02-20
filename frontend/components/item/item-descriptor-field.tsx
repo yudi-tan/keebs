@@ -19,11 +19,10 @@ const ItemDescriptorField: NextPage<ItemDescriptorFieldProps> = ({
       <Grid item xs={1}>
         {icon}
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={3}>
         <Typography>{descriptor}</Typography>
       </Grid>
-      <Grid item xs={3} />
-      <Grid item xs={7}>
+      <Grid item xs={8}>
         <Typography>{description}</Typography>
       </Grid>
     </Grid>
