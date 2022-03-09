@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Divider from "@mui/material/Divider";
@@ -6,9 +7,12 @@ import Box from "@mui/material/Box";
 import ItemCard from "../../components/item/item-card.tsx";
 import UserCard from "../../components/user/user-card.tsx";
 import UserDescription from "../../components/user/user-description.tsx";
+import IconButton from "@mui/material/IconButton";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { Typography } from "@mui/material";
+import { PageMode } from "../../utils/enums.tsx";
 
-const UserPage: NextPage = () => {
+const UserPage: NextPage = ({ username: string }) => {
   const router = useRouter();
   const { username } = router.query;
   const mockDescriptors: Map<string, string> = new Map([
@@ -17,6 +21,10 @@ const UserPage: NextPage = () => {
     ["Switches", "Cherry Hyperglide Blacks"],
     ["Keycaps", "CRP Tulip R4"],
   ]);
+
+  const [userMetaMode, setUserMetaMode] = useState(PageMode.Default);
+  const [albumMode, setAlbumMode] = useState(PageMode.Default);
+
   return (
     <Box mt={2} mb={8} mx={4} pt={3}>
       <Grid container spacing={5}>
@@ -28,10 +36,25 @@ const UserPage: NextPage = () => {
             profileHandle={username}
             // TODO: this was intended to be a display name rather than description
             profileDescription="Will Wang"
+            pageMode={userMetaMode}
           />
         </Grid>
         <Grid item xs>
           <UserDescription />
+        </Grid>
+        <Grid item>
+          <IconButton
+            aria-label="edit-user-description"
+            onClick={() => {
+              if (userMetaMode == PageMode.Default) {
+                setUserMetaMode(PageMode.Edit);
+              } else {
+                setUserMetaMode(PageMode.Default);
+              }
+            }}
+          >
+            <ModeEditIcon />
+          </IconButton>
         </Grid>
       </Grid>
       <Box my={4}>
@@ -54,6 +77,14 @@ const UserPage: NextPage = () => {
       </Grid>
     </Box>
   );
+};
+
+// SSR the username since if not the initial render will not have username
+// populated as router.query is a React Hook and first render will
+// be undefined.
+UserPage.getInitialProps = async ({ query }) => {
+  const { username } = query;
+  return { username };
 };
 
 export default UserPage;
