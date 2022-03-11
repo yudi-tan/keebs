@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { NextPage } from "next";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import ItemCarousel from "./item-carousel.tsx";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";

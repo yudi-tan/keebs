@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import ItemCard from "../../components/item/item-card.tsx";
 import UserCard from "../../components/user/user-card.tsx";
 import UserDescription from "../../components/user/user-description.tsx";
-import { Typography } from "@mui/material";
 
 const UserPage: NextPage = () => {
   const router = useRouter();
